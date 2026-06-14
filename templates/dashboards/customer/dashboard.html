@@ -1,0 +1,63 @@
+{% extends "dashboards/layout.html" %}
+
+{% block dashboard_content %}
+<section id="customer-overview" class="landing-section space-y-4">
+  <h2 class="text-xl font-semibold text-slate-900">Customer overview</h2>
+  <div class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+    <p class="text-slate-700">
+      Welcome, <span class="font-medium">{{ session_user.display_name }}</span>.
+      This is your mock customer home for the Samadhan demo.
+    </p>
+    <p class="mt-2 text-sm text-slate-500">
+      Seeded loan and ticket data will appear after T-016/T-017. All values are fake demo records.
+    </p>
+  </div>
+</section>
+
+<section id="loans" class="landing-section space-y-4">
+  <h2 class="text-xl font-semibold text-slate-900">Active, pending, and closed loans</h2>
+  <div class="dashboard-card-grid grid gap-3 sm:grid-cols-3">
+    <div class="rounded-lg border border-dashed border-slate-300 bg-white p-4 text-sm text-slate-600">
+      <h3 class="font-semibold text-slate-900">Active loans</h3>
+      <p class="mt-2">Loan summary cards will appear here (T-017+ seed, T-064+ UI).</p>
+    </div>
+    <div class="rounded-lg border border-dashed border-slate-300 bg-white p-4 text-sm text-slate-600">
+      <h3 class="font-semibold text-slate-900">Pending applications</h3>
+      <p class="mt-2">Pending loan status placeholders — mock data only.</p>
+    </div>
+    <div class="rounded-lg border border-dashed border-slate-300 bg-white p-4 text-sm text-slate-600">
+      <h3 class="font-semibold text-slate-900">Closed loans</h3>
+      <p class="mt-2">Closed loan history placeholders — no real account changes.</p>
+    </div>
+  </div>
+</section>
+
+<section id="tickets" class="landing-section space-y-4">
+  <h2 class="text-xl font-semibold text-slate-900">Recent tickets</h2>
+  <div class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+    <p class="text-sm text-slate-600">No tickets loaded — ticketing arrives in later milestones.</p>
+  </div>
+</section>
+
+<section id="documents" class="landing-section space-y-4">
+  <h2 class="text-xl font-semibold text-slate-900">Generated documents</h2>
+  <div class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+    <p class="text-sm text-slate-600">No documents generated yet — mock statement and NOC flows come later.</p>
+  </div>
+</section>
+
+<section id="chat-cta" class="landing-section pb-4">
+  <h2 class="text-xl font-semibold text-slate-900">Customer chat</h2>
+  <div class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+    <p class="mb-4 text-sm text-slate-600">
+      Ask scenario-specific questions after customer chat is implemented. No real lending actions are performed.
+    </p>
+    <span
+      class="inline-block cursor-not-allowed rounded-lg bg-slate-200 px-5 py-2.5 text-sm font-medium text-slate-500"
+      title="Customer chat coming in a later milestone"
+    >
+      Open customer chat (coming soon)
+    </span>
+  </div>
+</section>
+{% endblock %}

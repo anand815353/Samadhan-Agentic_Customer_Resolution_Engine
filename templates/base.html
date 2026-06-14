@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ page_title | default(app_name) }}{% endblock %}</title>
+  {# MVP: Tailwind CDN for T-003; compiled CSS planned for deployment hardening (T-080) #}
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', path='css/app.css') }}">
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-900 antialiased">
+  <header class="border-b border-slate-200 bg-white">
+    <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
+      <a href="/" class="text-lg font-semibold text-slate-900">{{ app_name | default("Samadhan") }}</a>
+      <nav class="flex items-center gap-4 text-sm text-slate-600" aria-label="Main navigation">
+        {% if session_user %}
+        <span class="text-slate-700">{{ session_user.display_name }}</span>
+        <form method="post" action="/logout" class="inline">
+          <button type="submit" class="hover:text-slate-900">Logout</button>
+        </form>
+        {% else %}
+        <a href="/login" class="hover:text-slate-900">Login</a>
+        {% endif %}
+        <a href="/demo-access" class="hover:text-slate-900">Demo access</a>
+      </nav>
+    </div>
+  </header>
+
+  {% include "partials/demo_disclaimer.html" %}
+
+  <main class="mx-auto max-w-5xl px-4 py-8">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="mt-auto border-t border-slate-200 bg-white py-6 text-center text-sm text-slate-500">
+    <p>Mock demo project — no real financial operations are performed.</p>
+    {% if app_version %}
+    <p class="mt-1 text-xs text-slate-400">Version {{ app_version }}</p>
+    {% endif %}
+  </footer>
+
+  <script src="{{ url_for('static', path='js/app.js') }}"></script>
+</body>
+</html>

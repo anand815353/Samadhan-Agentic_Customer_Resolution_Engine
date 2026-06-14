@@ -1,0 +1,23 @@
+/* Samadhan app overrides — Tailwind utilities come from CDN in base.html */
+
+.demo-disclaimer {
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.landing-section {
+  scroll-margin-top: 1rem;
+}
+
+.demo-table {
+  overflow-x: auto;
+}
+
+.dashboard-card-grid {
+  display: grid;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}

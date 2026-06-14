@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page_title }} — Agentic Customer Resolution{% endblock %}
+
+{% block content %}
+<div class="space-y-16">
+  <section class="landing-section space-y-6">
+    <span class="inline-block rounded-full bg-slate-200 px-3 py-1 text-xs font-medium uppercase tracking-wide text-slate-700">
+      Resume / recruiter demo · Mock data only
+    </span>
+    <div class="space-y-4">
+      <h1 class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">{{ app_name }}</h1>
+      <p class="text-xl font-medium text-slate-700">
+        Agentic customer resolution for mock digital lending support
+      </p>
+      <p class="max-w-3xl text-lg text-slate-600">
+        Samadhan is a GCP-ready, agentic customer resolution engine for digital lending support.
+        It combines LangGraph-controlled workflows, policy RAG, mock internal tools, guardrails,
+        risk-aware ticketing, human escalation, audit logs, and evaluation — all on fake seeded data.
+      </p>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <a
+        href="/demo-access"
+        class="inline-block rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-slate-800"
+      >
+        Explore demo access
+      </a>
+      <a
+        href="/login"
+        class="inline-block rounded-lg border border-slate-300 bg-white px-5 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50"
+      >
+        Sign in
+      </a>
+    </div>
+  </section>
+
+  <section id="problem" class="landing-section space-y-4">
+    <h2 class="text-2xl font-semibold text-slate-900">The problem</h2>
+    <p class="max-w-3xl text-slate-600">
+      Digital lending customer support spans loan application status, KYC and document issues,
+      EMI and payment disputes, refund or reversal questions, NOC and closure certificates,
+      bureau reporting complaints, fraud and security alerts, relationship-manager callbacks,
+      and top-up eligibility queries. Manual triage is slow and inconsistent.
+    </p>
+    <p class="max-w-3xl text-slate-600">
+      Samadhan demonstrates how a controlled agentic workflow can resolve or safely route these
+      issues with deterministic guardrails, policy-backed answers, mock tool lookups, and human
+      escalation when risk or sensitivity requires it.
+    </p>
+  </section>
+
+  <section id="scenarios" class="landing-section space-y-4">
+    <h2 class="text-2xl font-semibold text-slate-900">Supported demo scenarios</h2>
+    <p class="max-w-3xl text-sm text-slate-600">
+      Ten seeded customer personas cover realistic fintech support flows. All data is fake and for demo only.
+    </p>
+    <ul class="scenario-grid grid gap-3 sm:grid-cols-2">
+      <li class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        <h3 class="font-semibold text-slate-900">Loan pending due to KYC</h3>
+        <p class="mt-1 text-sm text-slate-600">Check mock KYC status and suggest next steps.</p>
+      </li>
+      <li class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        <h3 class="font-semibold text-slate-900">Loan rejected — safe reason lookup</h3>
+        <p class="mt-1 text-sm text-slate-600">Explain customer-safe rejection reasons from mock data.</p>
+      </li>
+      <li class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        <h3 class="font-semibold text-slate-900">Duplicate EMI debit</h3>
+        <p class="mt-1 text-sm text-slate-600">Investigate repayment records and escalate for human review.</p>
+      </li>
+      <li class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        <h3 class="font-semibold text-slate-900">Closed loan, NOC pending</h3>
+        <p class="mt-1 text-sm text-slate-600">Track closure status and mock NOC service requests.</p>
+      </li>
+      <li class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        <h3 class="font-semibold text-slate-900">Bureau still showing active loan</h3>
+        <p class="mt-1 text-sm text-slate-600">Review mock bureau reporting logs and explain reporting lag.</p>
+      </li>
+      <li class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        <h3 class="font-semibold text-slate-900">Fraud / SMS security alert</h3>
+        <p class="mt-1 text-sm text-slate-600">Simulate security review and mandatory human escalation.</p>
+      </li>
+      <li class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        <h3 class="font-semibold text-slate-900">Pre-approved top-up offer</h3>
+        <p class="mt-1 text-sm text-slate-600">Show mock eligibility and create a lead only — no disbursement.</p>
+      </li>
+      <li class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        <h3 class="font-semibold text-slate-900">Not eligible for top-up</h3>
+        <p class="mt-1 text-sm text-slate-600">Explain mock ineligibility with policy-safe messaging.</p>
+      </li>
+      <li class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        <h3 class="font-semibold text-slate-900">Relationship manager callback</h3>
+        <p class="mt-1 text-sm text-slate-600">Route to seeded RM mapping or create a callback request.</p>
+      </li>
+      <li class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        <h3 class="font-semibold text-slate-900">Loan statement request</h3>
+        <p class="mt-1 text-sm text-slate-600">Generate mock documents or open a service request.</p>
+      </li>
+    </ul>
+    <p class="text-sm text-slate-500">
+      Demo credentials and a scenario walkthrough are on the
+      <a href="/demo-access" class="font-medium text-slate-900 underline hover:text-slate-700">Demo access</a>
+      page.
+    </p>
+  </section>
+
+  <section id="capabilities" class="landing-section space-y-4">
+    <h2 class="text-2xl font-semibold text-slate-900">Key capabilities</h2>
+    <ul class="grid gap-3 sm:grid-cols-2">
+      <li class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        <h3 class="font-semibold text-slate-900">LangGraph workflow</h3>
+        <p class="mt-1 text-sm text-slate-600">Controlled agentic orchestration with deterministic guardrails.</p>
+      </li>
+      <li class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        <h3 class="font-semibold text-slate-900">Policy RAG</h3>
+        <p class="mt-1 text-sm text-slate-600">Retrieve approved policy and SOP knowledge via Qdrant for safe answers.</p>
+      </li>
+      <li class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        <h3 class="font-semibold text-slate-900">Mock fintech tools</h3>
+        <p class="mt-1 text-sm text-slate-600">Loan status, KYC, repayments, transactions, offers — demo data only.</p>
+      </li>
+      <li class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        <h3 class="font-semibold text-slate-900">Risk-aware ticketing</h3>
+        <p class="mt-1 text-sm text-slate-600">Tier 2 conversations, Tier 1 service requests, and Human Review queues.</p>
+      </li>
+      <li class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        <h3 class="font-semibold text-slate-900">Human escalation</h3>
+        <p class="mt-1 text-sm text-slate-600">High-risk cases route to support-agent review — never auto-closed.</p>
+      </li>
+      <li class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        <h3 class="font-semibold text-slate-900">Audit logs</h3>
+        <p class="mt-1 text-sm text-slate-600">Deterministic tool and decision logs with sensitive data masked.</p>
+      </li>
+      <li class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:col-span-2">
+        <h3 class="font-semibold text-slate-900">Golden evaluation &amp; LLMOps</h3>
+        <p class="mt-1 text-sm text-slate-600">Regression cases for intent, routing, guardrails, and response safety.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="architecture" class="landing-section space-y-4">
+    <h2 class="text-2xl font-semibold text-slate-900">Architecture highlights</h2>
+    <ul class="grid gap-2 sm:grid-cols-2 text-sm text-slate-600">
+      <li class="rounded-lg border border-slate-200 bg-white px-4 py-3">FastAPI modular monolith</li>
+      <li class="rounded-lg border border-slate-200 bg-white px-4 py-3">Jinja + HTMX + Tailwind + Alpine</li>
+      <li class="rounded-lg border border-slate-200 bg-white px-4 py-3">MongoDB operational data</li>
+      <li class="rounded-lg border border-slate-200 bg-white px-4 py-3">Qdrant policy RAG · Redis local-first</li>
+      <li class="rounded-lg border border-slate-200 bg-white px-4 py-3">Role-based access: customer, support agent, admin</li>
+      <li class="rounded-lg border border-slate-200 bg-white px-4 py-3">Optional LangSmith tracing · Cloud Run-ready</li>
+    </ul>
+  </section>
+
+  <section id="demo-boundaries" class="landing-section space-y-4">
+    <h2 class="text-2xl font-semibold text-slate-900">Mock demo boundaries</h2>
+    <div class="rounded-lg border border-amber-200 bg-amber-50 p-5 text-sm text-amber-950">
+      <ul class="list-disc space-y-2 pl-5">
+        <li>All customers, loans, applications, and transactions are fake seeded demo data.</li>
+        <li>No real banking, lending, payment, refund, KYC, bureau, or account-freeze operations are performed.</li>
+        <li>Mock tools may simulate lookups and create review requests or tickets — they never move real money or change real accounts.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="landing-section pb-4">
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+      <h2 class="text-xl font-semibold text-slate-900">Ready to explore?</h2>
+      <p class="mt-2 max-w-2xl text-sm text-slate-600">
+        View demo credentials, scenario guides, and role-based walkthroughs on the demo access page.
+      </p>
+      <div class="mt-4 flex flex-wrap gap-3">
+        <a
+          href="/demo-access"
+          class="inline-block rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-slate-800"
+        >
+          Explore demo access
+        </a>
+        <a
+          href="/login"
+          class="inline-block rounded-lg border border-slate-300 bg-white px-5 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50"
+        >
+          Sign in
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

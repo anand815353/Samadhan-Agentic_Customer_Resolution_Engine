@@ -1,0 +1,13 @@
+"""Application-wide constants."""
+
+DEFAULT_APP_NAME = "Samadhan"
+DEFAULT_APP_VERSION = "0.1.0"
+HEALTH_STATUS_OK = "ok"
+HEALTH_STATUS_DEGRADED = "degraded"
+
+CHECK_STATUS_OK = "ok"
+CHECK_STATUS_NOT_CONFIGURED = "not_configured"
+CHECK_STATUS_SKIPPED = "skipped"
+CHECK_STATUS_UNREACHABLE = "unreachable"
+
+PROBE_TIMEOUT_SECONDS = 1.5

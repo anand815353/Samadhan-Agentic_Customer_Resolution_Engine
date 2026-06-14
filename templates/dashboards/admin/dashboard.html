@@ -1,0 +1,33 @@
+{% extends "dashboards/layout.html" %}
+
+{% block dashboard_content %}
+<section id="policies" class="landing-section space-y-4">
+  <h2 class="text-xl font-semibold text-slate-900">Policy documents</h2>
+  <div class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+    <p class="text-sm text-slate-600">Policy count and index status placeholders — upload and re-indexing arrive later.</p>
+    <p class="mt-2 text-xs text-slate-500">Approved policy/SOP docs only; no real customer data in RAG.</p>
+  </div>
+</section>
+
+<section id="audit-logs" class="landing-section space-y-4">
+  <h2 class="text-xl font-semibold text-slate-900">Audit logs</h2>
+  <div class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+    <p class="text-sm text-slate-600">Audit log viewer stub — masked intent, tool, and guardrail events will appear here.</p>
+  </div>
+</section>
+
+<section id="evaluations" class="landing-section space-y-4">
+  <h2 class="text-xl font-semibold text-slate-900">Evaluation runs</h2>
+  <div class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+    <p class="text-sm text-slate-600">Golden case evaluation summary stub — no runner wired in this milestone.</p>
+  </div>
+</section>
+
+<section id="settings" class="landing-section pb-4">
+  <h2 class="text-xl font-semibold text-slate-900">Settings and cost-control status</h2>
+  <div class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+    <p class="text-sm text-slate-600">Daily message limits, LLM call caps, and token limits will be shown here.</p>
+    <p class="mt-2 text-xs text-slate-500">Configuration values are not exposed on this demo shell.</p>
+  </div>
+</section>
+{% endblock %}

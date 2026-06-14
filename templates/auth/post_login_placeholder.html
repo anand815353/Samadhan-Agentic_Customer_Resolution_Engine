@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page_title }} — {{ app_name }}{% endblock %}
+
+{% block content %}
+<section class="space-y-4">
+  <h1 class="text-3xl font-bold text-slate-900">{{ dashboard_title }}</h1>
+  {% if session_user %}
+  <p class="text-slate-600">
+    Signed in as <span class="font-medium text-slate-900">{{ session_user.display_name }}</span>
+    ({{ session_user.role | replace('_', ' ') }}).
+  </p>
+  {% endif %}
+  <p class="text-sm text-slate-500">{{ dashboard_note }}</p>
+</section>
+{% endblock %}
