@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate samadhan_demo_seed_data.xlsx from template_spec (T-013 through T-020)."""
+"""Generate samadhan_demo_seed_data.xlsx from template_spec (T-013 through T-023)."""
 
 from __future__ import annotations
 
@@ -29,6 +29,9 @@ from app.seed.demo_personas import (  # noqa: E402
     demo_user_row_values,
 )
 from app.seed.demo_policies import demo_knowledge_document_row_values  # noqa: E402
+from app.seed.demo_messages import demo_message_row_values  # noqa: E402
+from app.seed.demo_service_requests import demo_service_request_row_values  # noqa: E402
+from app.seed.demo_tickets import demo_ticket_row_values  # noqa: E402
 from app.seed.template_spec import (  # noqa: E402
     SHEET_SPECS,
     WORKBOOK_RELATIVE_PATH,
@@ -50,6 +53,9 @@ INITIAL_DATA_SHEETS = frozenset(
         "fraud_cases",
         "knowledge_documents",
         "evaluation_cases",
+        "tickets",
+        "messages",
+        "service_requests",
     }
 )
 
@@ -85,6 +91,9 @@ def main() -> int:
         "fraud_cases": demo_fraud_case_row_values(),
         "knowledge_documents": demo_knowledge_document_row_values(),
         "evaluation_cases": demo_evaluation_case_row_values(),
+        "tickets": demo_ticket_row_values(),
+        "messages": demo_message_row_values(),
+        "service_requests": demo_service_request_row_values(),
     }
 
     for spec in SHEET_SPECS:
@@ -116,11 +125,16 @@ def main() -> int:
     )
     policy_total = len(initial_rows["knowledge_documents"])
     eval_total = len(initial_rows["evaluation_cases"])
+    ticket_total = len(initial_rows["tickets"])
+    message_total = len(initial_rows["messages"])
+    service_request_total = len(initial_rows["service_requests"])
     print(
         f"Wrote {len(SHEET_SPECS)} sheets to {output_path.relative_to(ROOT)} "
         f"({len(initial_rows['customers'])} customers, {len(initial_rows['users'])} users, "
         f"{lending_total} lending rows, {bureau_total} bureau/offers rows, "
-        f"{policy_total} policy rows, {eval_total} evaluation rows)"
+        f"{policy_total} policy rows, {eval_total} evaluation rows, "
+        f"{ticket_total} ticket rows, {message_total} message rows, "
+        f"{service_request_total} service request rows)"
     )
     return 0
 

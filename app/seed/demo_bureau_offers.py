@@ -11,6 +11,7 @@ from typing import Any
 
 from app.seed.demo_lending import LN_IMRAN
 from app.seed.demo_personas import DEMO_CUSTOMERS, DEMO_SEED_TIMESTAMP
+from app.seed.demo_tickets import TKT_KAVITA
 from app.seed.template_spec import SHEET_SPECS_BY_NAME, header_columns
 
 # Stable anchor IDs referenced by MOCK_TOOLS_SPEC examples and DEMO_GUIDE scenarios.
@@ -20,7 +21,6 @@ FRD_KAVITA = "FRD-2026-0006"
 OFFER_MOHIT = "OFFER-2026-0001"
 OFFER_NEHA = "OFFER-2026-0002"
 RM_FARHAN = "RM-2026-0001"
-TKT_KAVITA_PLACEHOLDER = "TKT-2026-0006"
 TXN_KAVITA_FRAUD = "TXN-2026-0006"
 
 CUSTOMER_IDS = {customer.customer_id for customer in DEMO_CUSTOMERS}
@@ -96,7 +96,7 @@ _RM_MAPPINGS: list[dict[str, Any]] = [
 _FRAUD_CASES: list[dict[str, Any]] = [
     {
         "fraud_case_id": FRD_KAVITA,
-        "ticket_id": TKT_KAVITA_PLACEHOLDER,
+        "ticket_id": TKT_KAVITA,
         "customer_id": "CUST-006",
         "reported_transaction_id": TXN_KAVITA_FRAUD,
         "freeze_simulated": True,

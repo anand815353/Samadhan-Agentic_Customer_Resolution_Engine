@@ -1,0 +1,70 @@
+# Samadhan demo seed manifest (T-013)
+# T-014 validate-only imports app.seed.template_spec using this manifest.
+
+version: "1.0.0"
+spec_module: app.seed.template_spec
+workbook: master_excel/samadhan_demo_seed_data.xlsx
+workbook_relative_from_app_root: data/seed/master_excel/samadhan_demo_seed_data.xlsx
+
+default_demo_password: Demo@123
+
+sheet_name_aliases:
+  knowledge_documents: policy_documents
+  evaluation_cases: golden_eval_cases
+
+validate_required_sheets:
+  - users
+  - customers
+  - loan_applications
+  - loans
+  - kyc_documents
+  - repayment_schedule
+  - payment_transactions
+  - refund_requests
+  - service_requests
+  - bureau_reporting_logs
+  - rm_mapping
+  - fraud_cases
+  - offers
+  - tickets
+  - messages
+  - audit_logs
+  - knowledge_documents
+  - evaluation_cases
+  - usage_counters
+
+seed_phases:
+  initial:
+    task: T-016
+    sheets: [users, customers]
+  lending:
+    task: T-017
+    sheets:
+      - loan_applications
+      - loans
+      - kyc_documents
+      - repayment_schedule
+      - payment_transactions
+  bureau_offers:
+    task: T-018
+    sheets:
+      - bureau_reporting_logs
+      - rm_mapping
+      - fraud_cases
+      - offers
+  policies:
+    task: T-019
+    sheets: [knowledge_documents]
+  evaluations:
+    task: T-020
+    sheets: [evaluation_cases]
+  ticketing:
+    task: T-021+
+    sheets:
+      - tickets
+      - messages
+      - refund_requests
+      - service_requests
+  runtime:
+    task: T-024+
+    sheets: [audit_logs, usage_counters]

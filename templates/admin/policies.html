@@ -1,0 +1,86 @@
+{% extends "dashboards/layout.html" %}
+
+{% block dashboard_content %}
+<section class="landing-section space-y-4">
+  <div class="flex flex-wrap items-center justify-between gap-3">
+    <div>
+      <h2 class="text-xl font-semibold text-slate-900">Policy indexing</h2>
+      <p class="mt-1 text-sm text-slate-600">
+        Approved policy/SOP documents only. Re-index updates Qdrant vectors from on-disk source files.
+      </p>
+    </div>
+    <a href="/admin/dashboard" class="text-sm font-medium text-indigo-700 hover:text-indigo-900">
+      ← Back to admin dashboard
+    </a>
+  </div>
+
+  <div class="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+    Mock demo environment — seeded policy files only; no real customer or bureau data is indexed.
+  </div>
+
+  {% if flash %}
+  <div
+    class="rounded-lg border px-4 py-3 text-sm {% if flash.success %}border-emerald-200 bg-emerald-50 text-emerald-900{% else %}border-amber-200 bg-amber-50 text-amber-900{% endif %}"
+    role="status"
+  >
+    <p class="font-medium">
+      {% if flash.success %}Re-index succeeded{% else %}Re-index failed{% endif %}
+      — {{ flash.document_id }}
+    </p>
+    <p class="mt-1">{{ flash.message }}</p>
+    {% if flash.success %}
+    <p class="mt-1 text-xs">
+      Chunks: {{ flash.chunk_count }}{% if flash.indexed_at %} · Indexed at: {{ flash.indexed_at }}{% endif %}
+    </p>
+    {% elif flash.error_category %}
+    <p class="mt-1 text-xs">Category: {{ flash.error_category }}</p>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  <div class="overflow-x-auto rounded-lg border border-slate-200 bg-white shadow-sm">
+    <table class="min-w-full divide-y divide-slate-200 text-sm">
+      <thead class="bg-slate-50 text-left text-xs font-semibold uppercase tracking-wide text-slate-600">
+        <tr>
+          <th class="px-4 py-3">Document ID</th>
+          <th class="px-4 py-3">Title</th>
+          <th class="px-4 py-3">Domain</th>
+          <th class="px-4 py-3">Approval</th>
+          <th class="px-4 py-3">Index status</th>
+          <th class="px-4 py-3">Chunks</th>
+          <th class="px-4 py-3">Indexed at</th>
+          <th class="px-4 py-3">Action</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-100 text-slate-800">
+        {% for doc in documents %}
+        <tr>
+          <td class="px-4 py-3 font-mono text-xs">{{ doc.document_id }}</td>
+          <td class="px-4 py-3">{{ doc.title }}</td>
+          <td class="px-4 py-3">{{ doc.domain }}</td>
+          <td class="px-4 py-3">{{ doc.approval_status }}</td>
+          <td class="px-4 py-3">{{ doc.indexed_status }}</td>
+          <td class="px-4 py-3">{{ doc.chunk_count }}</td>
+          <td class="px-4 py-3 text-xs text-slate-600">{{ doc.indexed_at or "—" }}</td>
+          <td class="px-4 py-3">
+            <form method="post" action="/admin/policies/{{ doc.document_id }}/reindex" class="inline">
+              <button
+                type="submit"
+                class="rounded-md px-3 py-1.5 text-xs font-medium {% if doc.reindex_eligible %}bg-indigo-600 text-white hover:bg-indigo-700{% else %}cursor-not-allowed bg-slate-200 text-slate-500{% endif %}"
+                {% if not doc.reindex_eligible %}disabled title="{{ doc.ineligible_reason }}"{% endif %}
+              >
+                Re-index
+              </button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr>
+          <td colspan="8" class="px-4 py-6 text-center text-slate-500">No policy documents found.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}
